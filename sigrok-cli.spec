@@ -14,7 +14,7 @@ BuildRequires:	automake
 BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRequires:	glib2-devel
-BuildRequires:	libsigrok-devel
+BuildRequires:	libsigrok-devel >= 0.2.0
 BuildRequires:	libsigrokdecode-devel
 
 %description
