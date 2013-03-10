@@ -10,12 +10,13 @@ URL:		http://www.sigrok.org/
 # Source0:	http://sigrok.org/gitweb/?p=sigrok-cli.git;a=snapshot;h=%{snap};sf=tgz;/%{name}-%{snap}.tar.gz
 Source0:	%{name}-%{snap}.tar.gz
 # Source0-md5:	f9bf44dac11d6cc7ebd040a76381d831
-BuildRequires:	automake
 BuildRequires:	autoconf
-BuildRequires:	libtool
+BuildRequires:	automake
 BuildRequires:	glib2-devel
 BuildRequires:	libsigrok-devel >= 0.2.0
 BuildRequires:	libsigrokdecode-devel
+BuildRequires:	libtool
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 %{name} is a command-line tool written in C, which uses both libsigrok
@@ -40,7 +41,6 @@ install -d autostuff
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
