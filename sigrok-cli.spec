@@ -1,20 +1,17 @@
-%define	snap	5d09b45
 Summary:	Basic hardware access drivers for logic analyzers
 Name:		sigrok-cli
-Version:	0.3.1
-Release:	0.%{snap}.1
+Version:	0.4.0
+Release:	1
 License:	GPL v3+
 Group:		X11/Applications/Science
 URL:		http://www.sigrok.org/
-# Source0:	http://downloads.sourceforge.net/sigrok/%{name}-%{version}.tar.gz
-# Source0:	http://sigrok.org/gitweb/?p=sigrok-cli.git;a=snapshot;h=%{snap};sf=tgz;/%{name}-%{snap}.tar.gz
-Source0:	%{name}-%{snap}.tar.gz
-# Source0-md5:	f9bf44dac11d6cc7ebd040a76381d831
+Source0:	http://www.sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
+# Source0-md5:	7495ac50869f8418ab1b8d68120fd383
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel
-BuildRequires:	libsigrok-devel >= 0.2.0
-BuildRequires:	libsigrokdecode-devel
+BuildRequires:	libsigrok-devel >= 0.2.0-1
+BuildRequires:	libsigrokdecode-devel >= 0.2.0
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -24,7 +21,7 @@ and libsigrokdecode to provide the basic sigrok functionality from the
 command-line. Among other things, it is useful for scripting purposes.
 
 %prep
-%setup -q -n %{name}-%{snap}
+%setup -q
 
 %build
 install -d autostuff
