@@ -1,19 +1,23 @@
-Summary:	Basic hardware access drivers for logic analyzers - command line tool
-Summary(pl.UTF-8):	Podstawowe sterowniki dostępu do sprzętu dla analizatorów logicznych - narzędzie linii poleceń
+Summary:	Basic hardware access for logic analyzers - command line tool
+Summary(pl.UTF-8):	Podstawowy dostęp do sprzętu dla analizatorów logicznych - narzędzie linii poleceń
 Name:		sigrok-cli
-Version:	0.4.0
+Version:	0.5.0
 Release:	1
 License:	GPL v3+
 Group:		Applications/Science
 Source0:	http://www.sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
-# Source0-md5:	7495ac50869f8418ab1b8d68120fd383
+# Source0-md5:	f6786bc4d2455b8b7d225f4909946549
 URL:		http://www.sigrok.org/
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	glib2-devel
-BuildRequires:	libsigrok-devel >= 0.2.0-1
-BuildRequires:	libsigrokdecode-devel >= 0.2.0
-BuildRequires:	libtool
+BuildRequires:	autoconf >= 2.63
+BuildRequires:	automake >= 1:1.11
+BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	libsigrok-devel >= 0.3.0
+BuildRequires:	libsigrokdecode-devel >= 0.3.0
+BuildRequires:	libtool >= 2:2
+BuildRequires:	pkgconfig >= 1:0.22
+Requires:	glib2 >= 1:2.28.0
+Requires:	libsigrok >= 0.3.0
+Requires:	libsigrokdecode >= 0.3.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -32,14 +36,12 @@ do tworzenia skryptów.
 %setup -q
 
 %build
-install -d autostuff
 %{__libtoolize}
 %{__aclocal}
 %{__autoheader}
 %{__autoconf}
 %{__automake}
 %configure \
-	--disable-static \
 	--disable-silent-rules
 
 %{__make}
@@ -54,5 +56,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/sigrok-cli
 %{_mandir}/man1/sigrok-cli.1*
