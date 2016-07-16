@@ -10,14 +10,14 @@ Source0:	http://www.sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar
 URL:		http://www.sigrok.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.32.0
 BuildRequires:	libsigrok-devel >= 0.4.0
 BuildRequires:	libsigrokdecode-devel >= 0.4.0
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.22
-Requires:	glib2 >= 1:2.28.0
-Requires:	libsigrok >= 0.3.0
-Requires:	libsigrokdecode >= 0.3.0
+Requires:	glib2 >= 1:2.32.0
+Requires:	libsigrok >= 0.4.0
+Requires:	libsigrokdecode >= 0.4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,9 +37,9 @@ do tworzenia skryptów.
 
 %build
 %{__libtoolize}
-%{__aclocal}
-%{__autoheader}
+%{__aclocal} -I m4
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-silent-rules
