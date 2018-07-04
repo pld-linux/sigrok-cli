@@ -1,23 +1,23 @@
 Summary:	Basic hardware access for logic analyzers - command line tool
 Summary(pl.UTF-8):	Podstawowy dostęp do sprzętu dla analizatorów logicznych - narzędzie linii poleceń
 Name:		sigrok-cli
-Version:	0.6.0
+Version:	0.7.0
 Release:	1
 License:	GPL v3+
 Group:		Applications/Science
 Source0:	http://www.sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
-# Source0-md5:	5989c334c6e679585b6730011fac4c4a
+# Source0-md5:	77cb745e2fa239c7bd1ea81e2d67ede9
 URL:		http://www.sigrok.org/
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	glib2-devel >= 1:2.32.0
-BuildRequires:	libsigrok-devel >= 0.4.0
-BuildRequires:	libsigrokdecode-devel >= 0.4.0
+BuildRequires:	libsigrok-devel >= 0.5.0
+BuildRequires:	libsigrokdecode-devel >= 0.5.0
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.22
 Requires:	glib2 >= 1:2.32.0
-Requires:	libsigrok >= 0.4.0
-Requires:	libsigrokdecode >= 0.4.0
+Requires:	libsigrok >= 0.5.0
+Requires:	libsigrokdecode >= 0.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
