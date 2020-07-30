@@ -1,13 +1,13 @@
 Summary:	Basic hardware access for logic analyzers - command line tool
 Summary(pl.UTF-8):	Podstawowy dostęp do sprzętu dla analizatorów logicznych - narzędzie linii poleceń
 Name:		sigrok-cli
-Version:	0.7.0
+Version:	0.7.1
 Release:	1
 License:	GPL v3+
 Group:		Applications/Science
-Source0:	http://www.sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
-# Source0-md5:	77cb745e2fa239c7bd1ea81e2d67ede9
-URL:		http://www.sigrok.org/
+Source0:	https://sigrok.org/download/source/sigrok-cli/%{name}-%{version}.tar.gz
+# Source0-md5:	3f45ce664bad529d8b3f78a61b017d75
+URL:		https://sigrok.org/wiki/Sigrok-cli
 BuildRequires:	autoconf >= 2.63
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	glib2-devel >= 1:2.32.0
@@ -15,6 +15,7 @@ BuildRequires:	libsigrok-devel >= 0.5.0
 BuildRequires:	libsigrokdecode-devel >= 0.5.0
 BuildRequires:	libtool >= 2:2
 BuildRequires:	pkgconfig >= 1:0.22
+Requires(post,postun):	desktop-file-utils
 Requires:	glib2 >= 1:2.32.0
 Requires:	libsigrok >= 0.5.0
 Requires:	libsigrokdecode >= 0.5.0
@@ -48,14 +49,25 @@ do tworzenia skryptów.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+%update_desktop_database
+%update_icon_cache hicolor
+
+%postun
+%update_desktop_database
+%update_icon_cache hicolor
+
 %files
 %defattr(644,root,root,755)
 %doc ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/sigrok-cli
+%{_desktopdir}/org.sigrok.sigrok-cli.desktop
+%{_iconsdir}/hicolor/scalable/apps/sigrok-cli.svg
 %{_mandir}/man1/sigrok-cli.1*
